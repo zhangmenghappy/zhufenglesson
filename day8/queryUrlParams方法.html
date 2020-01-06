@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    let url = 'https://www.baidu.com?name=erYa&age=18&wd=千与千寻&sex=gril#index';
+     function sun(url){
+         let aa=url.indexOf("?");
+         let bb=url.indexOf("#");
+         let cc=url.substring(aa+1,bb);
+         let dd=cc.split("&");
+         let ff= url.substring(bb+1);
+         let obj={
+             index:ff,
+         }
+         for(let i=0;i<dd.length;i++){
+             let ee=dd[i].split("=");
+         obj[ee[0]]=ee[1];
+         }
+         return obj;
+     }
+     console.log(sun(url));
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+   
+    function arrSort(arr){
+        let newArr=[arr[0]];
+        //console.log(newArr);
+        for(var i=1;i<arr.length;i++){
+            var aa=arr[i];
+            for(var j=newArr.length-1;j>=0;j--){
+                //console.log(newArr.length)
+                if(aa>newArr[j]){
+                    newArr.splice(j+1,0,aa);
+                    break;
+                }
+                if(j===0){
+                    newArr.unshift(aa);
+                }
+            }
+        }
+        return newArr;
+    }
+    let arr=[4,6,21,4];
+    console.log(arrSort(arr));
+
+
+    let fn=(n)=>{
+        return (m)=>{
+            return m;
+        }
+    }
+    
+    </script>
+</body>
+</html>

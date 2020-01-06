@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{
+        margin:0;
+        padding:0;
+    }
+    body,html{
+    height:100%;
+    width:100%
+    }
+    #box{
+        width:800px;
+        height:50px;
+        margin:30px auto;
+        background: -webkit-linear-gradient(top right, rgba(37, 18, 18, 0.281),rgba(14, 223, 14, 0.274),rgba(219, 219, 28, 0.178));
+        color: orangered;
+            font-size: 20px;
+            font-weight: 400;
+          text-align:center;
+          line-height:50px;
+    }
+    </style>
+</head>
+<body>
+    <div id="box">
+ 
+    </div>
+    <script>
+    let box=document.getElementsByTagName('div')[0];
+    function addZero(value){  //不知10补零
+          if(value<10){
+           return '0'+value;
+          }else{
+              return value;
+          }
+          //return value<10?'0'+value:value;
+    }
+    //转换星期的方法
+    function transDay(value){
+        let obj={
+            0:"星期日",
+            1:"星期一",
+            2:"星期二",
+            3:"星期三",
+            4:"星期四",
+           5:"星期五",
+           6:"星期六",
+          
+        }
+        return obj[value];
+    }
+    function getTime(){
+        let time=new Date();
+         year=time.getFullYear();
+         month=time.getMonth()+1;
+         date=time.getDate();
+         day=time.getDay();
+         hour=time.getHours();
+         min=time.getMinutes();
+         sec=time.getSeconds();
+         let res=year+"年"+addZero(month)+"月"+addZero(date)+"日"+""+addZero(hour)+"时"+addZero(min)+"分"+addZero(sec)+"秒"+transDay(day);
+         box.innerHTML=res;
+    }
+    getTime();
+    setInterval(getTime,1000);
+   
+    </script>
+</body>
+</html>

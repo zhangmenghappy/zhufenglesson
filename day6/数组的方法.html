@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+//     let ary=[22,333,444,555];
+//    // console.log(ary.splice(0,0,7));
+// console.log(ary.splice(2,0,'k','j'));
+// ary=[11,55,4,3,9,77,88];
+// ary.sort(function(a,b){
+//   return a-b;
+// })
+// console.log(ary);
+// let ary=[44,5,6,77,88,2,5,7,2];
+// // console.log(ary.lastIndexOf(2));
+// console.log(ary.includes(44));
+
+let ary=[true,false,null,NaN];
+ary.forEach((item,index)=>{
+console.log(item,index);
+})
+
+function sum(...arg){
+    let total=null;
+    arg.forEach(item=>{
+        item=Number(item);
+        if(!isNaN(item)){
+            total+=item;
+        }
+    })
+    return total;
+}
+console.log(sum(...ary));
+    </script>
+</body>
+</html>

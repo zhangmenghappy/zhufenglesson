@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+    #one{
+        width:500px;
+        height:500px;
+        background:red;
+        margin:0 auto;
+    }
+    #two
+    {
+     font-size:16px;
+     color:palevioletred;
+     text-align:center;
+     cursor: pointer;
+    }
+    #three
+    {
+        width:300px;
+        height:300px;
+         
+        margin-left:100px;
+        margin-top:50px;
+    }
+    </style>
+</head>
+<body>
+    <div id="one">
+    <p id="two">隐藏</p>
+     <img id="three" src="./z.jpg" style="display:block">
+    </div>
+    <script>
+    let One=document.getElementById("one");
+    let Two=document.getElementById("two");
+    let Three=document.getElementById("three");
+    Two.onclick=function(){
+        if(Two.innerText=="隐藏"){
+            Two.innerText="显示";
+            Three.style.display="none";
+        }else if(Two.innerText=="显示"){
+            Two.innerText="隐藏";
+            Three.style.display="block";
+        }
+    }
+    </script>
+</body>
+</html>

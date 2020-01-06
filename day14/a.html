@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script> 
+     var num = 100;  //1    2 1
+        var obj = {
+            num: 2,
+            fn: function () {
+                num = 1; 
+                console.log(this);  //obj 
+                (function (num) {    
+                    console.log(num + this.num++);  // 3
+                })(this.num)  //1
+            }
+        }
+        obj.fn();   //obj 3
+        var f = obj.fn;  //window 
+        f();//2
+        console.log(num)  //2   //没有return 作用域销毁
+    </script>
+</body>
+</html>

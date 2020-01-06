@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+     li{
+         list-style:none;
+     }
+    </style>
+</head>
+<body>
+    <div id="box">
+      
+      <li>11</li>
+      <li>222222</li>
+      <li>33333333</li>
+      <li>4444</li>
+      <li>55</li>
+  
+    </div>
+    <script>
+    let box=document.getElementById("box");
+     let arr=box.childNodes;
+     let a=[];
+     for(var i=0;i<arr.length;i++){
+      if(arr[i].nodeType==1){
+          a.push(arr[i]);
+          console.log(arr[i]);
+      }
+     }
+     console.log(a);
+    </script>
+</body>
+</html>

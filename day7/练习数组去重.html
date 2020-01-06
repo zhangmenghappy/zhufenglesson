@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <script>
+     function sum(ary){
+       let obj={};
+       for(var i=0;i<ary.length;i++){
+           let next=ary[i];
+           if(obj[next]!=undefined){
+               ary.splice(i,1);
+               i--;
+           }
+           obj[next]=next;
+       }
+       return ary;
+    }
+    let ary=[2,3,3,4,1,5,1,7];
+    console.log(sum(ary));
+    </script> -->
+
+//优化算法
+<!-- <script>
+function sum(ary){
+    let obj={};
+    let arr=[];
+    for(let i=0;i<ary.length;i++){
+        obj[ary[i]]=ary[i];
+    }
+   for(var key in obj){
+   arr.push(obj[key]);
+   }
+   return arr;
+}
+let ary=[2,3,3,4,1,5,1,7];
+    console.log(sum(ary));
+</script> -->
+
+
+
+<!-- <script>
+function sum(ary){
+    let obj={};
+    for(let i=0;i<ary.length;i++){
+        let next=ary[i];
+        if(obj[next]!=undefined){
+            ary[i]=ary[ary.length-1];
+            ary.splice(i,1);
+            i--;
+        }else{
+            obj[next]=next;
+        }
+    }
+    return ary;
+}
+let ary=[2,3,3,4,1,5,1,7];
+    console.log(sum(ary)); -->
+
+
+    <!-- <script>
+        function sum(ary){
+             let arr=[];
+    for(var i=0;i<ary.length;i++){
+        var next=ary[i];
+        if(arr.indexOf(next) ==-1){
+          arr.push(next);
+      
+    }   
+        }return arr;
+    }
+    let ary=[2,3,3,4,1,5,1,7];
+    console.log(sum(ary));
+    </script>
+</script> -->
+
+
+<script>
+function sum (ary){
+    for(var i=0;i<ary.length-1;i++){
+        var a=ary[i];
+        for(var j=i+1;j<ary.length;j++){
+            var b=ary[j];
+            if(a==b){
+                ary.splice(j,1);
+                j--;
+            }
+        }
+    }
+    return ary;
+}
+let ary=[2,3,3,4,1,5,1,7];
+    console.log(sum(ary));
+</script>
+
+
+</body>
+</html>

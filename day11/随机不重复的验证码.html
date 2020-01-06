@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    #box{
+        width:200px;
+        height:100px;
+        margin:30px auto;
+        text-align:center;
+        line-height:100px;
+        border:1px solid black;
+    }
+    </style>
+</head>
+<body>
+    <div id="box">请点击</div>
+    <script>
+      let box=document.getElementById("box");
+      let timer=null;
+      let flag=true;
+      code();
+      box.onclick=function(){
+         if(flag){
+            flag=false;
+             timer=setInterval(code,100);
+         }else{
+            flag=true;
+             clearInterval(timer);
+         }
+      }
+      function code(){
+          let str = 'asdfghjkASDFGHJHK12345678';
+         // str=str.toLowerCase();
+          console.log(str);
+          let value="";
+          num=0;
+          let obj={};
+          while (num<4) {
+                let index = Math.round(Math.random()*(str.length-1-0)+0);
+                let item = str[index];
+                let k=item.toLowerCase();
+                if(typeof(obj[k])=='undefined'){
+                    value += item; // value = value+item  
+                    obj[k]=item;
+                    num++;
+                }                            
+            }
+          box.innerHTML=value;
+          console.log(obj);
+      }
+
+
+    </script>
+</body>
+</html>

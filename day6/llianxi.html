@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+    // var arr=[1,55,66,9,88,75,4];
+    // arr.push(55);
+    // console.log(arr); 
+   // let ary=[23,34,55,12,65];
+    // console.log(ary.splice(2));  
+    //console.log(ary.splice(2,1));
+    // let sum=(m,n)=>
+    //     m+n;
+
+    // console.log(sum(1,2));
+    // let fn=function(...arg){
+    //     console.log(arg);
+    //     console.log(...arg);
+    // }
+    // fn(1,5,6,7,8,9);
+    // function sum(m=0,n=0){
+    //  return m+n;
+    // }
+    // console.log(sum());
+    // let ary=[23,34,55,12,65];
+    // let a=ary.splice(2,0,true);
+    // console.log(a);
+    // console.log(ary);
+   
+    //let a= ary.slice(1,2);
+//    // let a= ary.join('+');
+//    let a=ary.sort(function(a,b){
+//     return b-a;
+//    });
+//let ary=[23,34,55,12,65];
+// let a=ary.includes(23);
+//     console.log(a);
+//     console.log(ary);
+
+// ary.forEach((item,index)=>{
+//       console.log(item,index);
+// })
+
+
+//任意数求和
+// function sun(...arg){
+//     let total=null;
+//     arg.forEach((item,index)=>{
+//         item=Number(item);
+//         if(!isNaN(item)){
+//             total+=item;
+//         }
+//     })
+//     return total;
+// }
+// let ary = [true, false, null, NaN];
+// console.log(sun(...ary));
+
+let ary=[1,2,3,4,5];
+let res=ary.map((item,index)=>{
+    return `<p>我是第${item}美人鱼</p>`
+})
+res=res.join('');
+console.log(res);
+     </script>
+</body>
+</html>

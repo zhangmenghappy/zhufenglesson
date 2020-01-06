@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id='a'>
+        <p>1111222</p>  
+        </div>
+        <input type="text"  id='b'>
+        <button id='c'>确定</button>
+    
+        <script>
+        let a=document.getElementById("a");
+        let b=document.getElementById("b");
+        let c=document.getElementById("c");
+       
+        c.onclick=function(){
+    
+        let aa=a.innerHTML;
+        let bb=b.value;
+        let res = '<p>' + bb + '</p>';
+        aa=aa+bb;
+        console.log(res);
+        console.log(aa);
+        a.innerHTML=aa;
+        b.value='';
+        }
+        </script>
+</body>
+</html>

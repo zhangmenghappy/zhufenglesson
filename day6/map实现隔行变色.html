@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{
+        margin : 0;
+        padding :0;
+    }
+    #box{
+        list-style:none;
+        width:500px;
+        height:500px;
+        margin:0 auto;
+        border:1px solid black;
+    }
+    #box li{
+        border-bottom:1px solid black;
+    }
+    #box li:nth-child{
+        background:blue;
+    }
+    #box li:nth-child{
+        background:chartreuse;
+    }
+    </style>
+</head>
+<body>
+    <ul id="box">
+    </ul>
+    <script>
+    let box=document.getElementById("box");
+    let ary=[1,2,3,4,5];
+    let res=ary.map((item,index)=>{
+        return `<li>我是第${item}行</li>`
+    })
+    res=res.join('');
+    console.log(res);
+    box.innerHTML=res;
+    </script>
+</body>
+</html>

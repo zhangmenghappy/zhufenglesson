@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{
+        margin:0;
+        padding:0;
+    }
+    div{
+        width:200px;
+        height:200px;
+        background:cyan;
+        margin:0 auto;
+        padding-top:30px;
+    }
+   #p{
+       display:block;
+     width:100px;
+     height:50px;
+     border:1px solid red;
+     margin:0 auto;
+     line-height:50px;
+     text-align:center;
+   }
+   #btn{
+       width:50px;
+       height:30px;
+       margin:0 auto;
+       display:block;
+       margin-top:20px;
+   }
+    </style>
+</head>
+<body>
+    <div>
+    <p id="p"></p>
+    <button id="btn">开始</button>
+    </div>
+    <script>
+    let p=document.getElementById("p");
+    let btn=document.getElementById("btn");
+    function seCode(){
+    let str=['楊怡伶','林亞蓉','李家偉','陳皓茜','楊郁婷','張旺茹','李彥志','張雅玫','郭育維','吳蘭木',
+      '江松蘭','吳淑霞','許育海','賴雅婷','謝宜恩','儲世昌'];
+       let index=Math.floor(Math.random()*(str.length-1));
+       let kk=str[index];
+       p.innerHTML=kk;
+    }
+
+   let ss=null;
+   btn.onclick=function(){
+       let aa=btn.innerHTML;
+       //console.log(aa);
+       if(aa=="开始"){
+           ss=setInterval(seCode,10);
+           btn.innerHTML="停止";
+       }else{
+           clearInterval(ss);
+        btn.innerHTML="开始";
+       }
+   }
+
+
+    seCode();
+    </script>
+</body>
+</html>

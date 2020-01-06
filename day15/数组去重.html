@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    // function sun(arr){
+    //   for(var i=0;i<arr.length-1;i++){
+    //      for(var j=i+1;j<arr.length;j++){
+    //          if(arr[i]==arr[j]){
+    //              arr.splice(j,1);
+    //              j--;
+    //          }
+    //      }
+    //   }
+    //   return arr;
+    // }
+
+
+    // function sun(arr){
+    //     let obj={};
+    //     let kk=[];
+    //   for(var i=0;i<arr.length;i++){
+    //       obj[arr[i]]=obj[i];
+    //   }
+    // for(var key in obj){
+    //     kk.push(key);
+    // }
+    // return kk;
+    // }
+
+
+    // function sun(arr){
+    //     let obj={};
+    //     for(var i=0;i<arr.length;i++){
+    //         let kk=arr[i];
+    //         if(obj[kk]!=undefined){
+    //              arr.splice(i,1);
+    //              i--;
+    //         }else{
+    //             obj[kk]=kk;
+    //         }
+    //     }
+    //     return arr;
+    // }
+
+
+    // function sun(arr){
+    //     let aa=[];
+    //     for(var i=0;i<arr.length;i++){
+    //         var kk=arr[i];
+    //         if(aa.indexOf(kk)==-1){
+    //             aa.push(kk);
+    //         }
+    //     }
+        
+    //     return aa;
+    // }
+
+    function sun(arr){
+        let obj={};
+        for(var i=0;i<arr.length;i++){
+            var  aa=arr[i];
+            if(obj[aa]!=undefined){
+                arr[i]=arr[arr.length-1];
+               // console.log(arr.length);
+                arr.length--;
+                i--;
+            }else{
+                obj[aa]=aa;
+            }
+        }
+        return arr;
+    }
+    let arr=[1,4,4,1,5,5];
+   let kk= sun(arr);
+    console.log(kk);
+    </script>
+</body>
+</html>

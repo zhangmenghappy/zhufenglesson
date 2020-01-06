@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{
+        margin:0;
+        padding:0;
+    }
+
+    #box{
+       width:800px;
+      margin:0 auto;
+    }
+    #ul{
+        display:flex;
+        height:50px;
+        list-style:none;
+        position:relative;
+        top:1px;
+    }
+    #ul li{
+        width:150px;
+        margin-right:20px;
+        text-align:center;
+        line-height:50px;
+        border:1px solid black;
+    }
+    #box div{
+     width:800px;
+     height:500px;
+     border:1px solid black;
+     display:none;
+     text-align:center;
+     line-height:500px;
+     font-size:50px;
+    }
+
+    #ul li.navName{
+        background:tomato;
+        border-bottom-color:tomato;
+    }
+   #box div.divName{
+        background:tomato;
+        display:block;
+    }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <ul id="ul">
+            <li class="navName">1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+        <div class="divName">one</div>
+        <div>two</div>
+        <div>three</div>
+    </div>
+    <script>
+    let box=document.getElementById("box");
+    let navList=box.getElementsByTagName("li");
+    let divList=box.getElementsByTagName("div");
+    for(var i=0;i<navList.length;i++){
+     navList[i].myStyle=i;
+     navList[i].onclick=function(){
+         fn(this.myStyle);
+     }
+    }
+    function fn(num){
+        for(var j=0;j<navList.length;j++){
+            navList[j].className="";
+            divList[j].className="";
+        }
+        navList[num].className='navName'
+        divList[num].className='divName';
+    }
+    </script>
+</body>
+</html>

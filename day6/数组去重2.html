@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //    function sum(ary){
+    //        let newAry=[];
+    //        for(let i=0;i<ary.length;i++){
+    //            if(newAry.indexOf(ary[i])==-1){
+    //                newAry.push(ary[i]);
+    //            }
+    //        }
+    //        return newAry;
+    //    } 
+    //    ary=[2,2,3,2,4,5,2];
+    //     console.log(sum(ary));
+
+   // let ary=[2,2,3,2,4,5,2];
+    function sum(ary){
+     var obj={};
+     for(var i=0;i<ary.length;i++){
+         var item=ary[i];
+  if(typeof(obj[item])!="undefined" ){
+      ary.splice(i,1);
+      i--;
+  }
+  obj[item]=item;
+     }
+     return ary;
+    }
+    var ary=[2,2,3,2,4,5,2];
+console.log(sum(ary));
+        </script>
+</body>
+</html>

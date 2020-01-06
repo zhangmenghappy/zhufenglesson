@@ -1,0 +1,917 @@
+day1
+1.图片存在cdn服务器，全国各地都有服务器
+2.浏览器：
+  - 打开控制台
+  - elements:可以查看和修改页面的结构和样式
+  - console：可以运行代码，还可以打印js中的内容，可以帮助调试代码
+  - sources：存放的是页面的静态资源
+  - network: 存放的发送数据的请求
+ 3.浏览器的分类
+ 谷歌（Chrome），火狐（Firefox），欧朋（Opera），IE，搜狗，Safari，QQ浏览器
+ webkit（v8）：Chrome，Safari，国产浏览器，手机浏览器
+ gecko：firefox
+ prosto: opera
+ trident: ie,ie edge（Chrome  mini）
+ 4.javascript
+ - js作为一门前端开发语言，不仅要操作浏览器，还要操作页面中的dom元素
+ - ECMASript（3/5）[老版本]:规定了js的语法，变量和操作语句等（ECMASript部门的核心成员是各个浏览器的开发者）
+ ECMASript简称ES3/5（6/7）[新版本]
+ - DOM：document object mode1:规定了一些js的一些属性和方法，用来操作页面中的dom元素（文档对象模型）
+ - BOM:  browser object mode1:规定了一些js的一些属性和方法,用来操作浏览器（浏览器对象模型）
+ 5.js中创建变量的方式
+ - var 创建变量（ES5）
+ - let 创建变量 （ES6）
+ - const常见常量（不许与被更改）（ES6）
+ - function 创建函数变量（ES5）
+ - import（ES6）导入
+ - class（ES6）创建类
+ 6.js的命名规范
+ - 严格遵循大小写
+ - 名字由数字，字母，下划线，$组成，不能以数字开头
+ - 不能以关键字和保留字作为变量名    var let=12; 不报错，不建议使用
+ - 遵循驼峰命名法（名字的第一个单词首字母小写，以后每一个有意义的单词的首字母大写）
+ 7.数据类型
+ - 基本数据类型
+   +number（NaN）//NaN 不是一个有效数字，但是是number数据类型的。NaN和谁都不相等，包括他自己
+   把其他数据类型转换为数字类型Number（val），把字符串转换为数字，只要字符串中出现了非有效数字，那转换的结果就是NaN（数字里的第一个
+   点和+-号不算）
+   如果左右有空格，会默认把空格去掉   console.log('    12    ');   //12     console.log('    1   2    ');  //NaN     
+   空字符串不管有没有空格转number都为0       console.log(' ');  //0
+   null转数字是0
+   undefined转数字是NaN
+   引用数据类型转数字：先把值转换为字符串（浏览器会默认调用toString（）方法），再把字符串转数字
+   普通对象转数字  {name：jack}   所有的普通对象转字符串都是 ‘[object  object]’,所有的普通对象转数字都是NaN
+   数组转数字：数组转 数字是把数组的每一项先转字符串，然后连同逗号和转换的结果拼接起来，再去转数字，空数组转字符串是0
+   parseInt和parseFloat是把字符串转化为数字   //从左往右依次查找有效数字，一旦发现非有效数字，就立即停止查找，把之前找到的数字返回（parseInt
+   不识别小数点，parseFloat识别一位小数点）  如果输入的值不是字符串类型的，会先把它转换成字符串再运算
+   isNaN:检测当前值是否是一个非有效数字，如果是非有效数字，就返回true，否则就返回false
+   如果你输入的不是number数据类型的值，他会调用Number方法，转换成数字，然后在检测（如果检测的值是有效数字，就返回false，反之返回true）
+  + string “”‘’``,
+   +boolean  true，false，
+   +null 空指针对象,
+   +undefined未定义，
+   +symbol创建唯一值
+  - 引用数据类型
+  object: 普通对象  {name：12，age：13}，数组[ 1,2,3,]，Math数学对象，正则//,  Date的实例
+  function ：普通函数
+  
+  
+  day2
+  1.string：
+  - 只要单引号，双引号，反引号包裹起来的都是字符串
+  - 把其他数据类型转换为字符串
+     val.toString()
+     把number 和bollean转字符串，直接加引号。console.log((12).toString()); //'12'    console.log(true.toString()); //'true'
+     把null和undefied不能调用toString 方法，会报错   console.log(null.toString());  //报错
+     如果一定要把null和undefined转换为字符串   console.log（null+''）;
+ 2.引用数据类型转字符串
+ - 普通对象转字符串‘[object Object ]’
+ - 数字转字符串，把数组里的每一项都装字符串，最后把所有的依次和逗号拼接起来   ，空数组转字符串是空字符串
+    console.log（[].toString()）//''
+ 3. 四则运算
+  - 在js也可以进行正常的四则运算  运算的时候如果运算的值不是数字类型的，他会默认转换为数字类型，在进行计算
+   console.log(true+true);
+  - 只要在运算的过程中出现NaN，那最后的结果就是NaN   console.log(null+true+undefined);  //NaN
+     console.log([]-0);  //0      console.log({}-0); //NaN 
+  - 在加法运算中有两种情况
+    正常的运算
+    如果在运算过程中字符串和加号相遇了，那就不是正常的运算，也不会进行数据类型转换，就成了字符串的拼接,（什么时候出现字符串什
+      么时候执行,有的如果是运算式的话,要计算再运算）字符串只会在减法中出现
+    console.log('true'+true); //'truetrue'    console.log('1'-true);  //0
+    如果在运算的过程中出现引用数据类型，那照样要进行数据类型转换
+    console.log(1+{}); //'1[object Object]'
+  4. 布尔boolean   true，false
+  - 把其他类型转换为布尔类型Boolean（val）;  console.log(Boolean(val));
+  - 把其他类型转换为布尔类型有且只有null,undefined,NaN,0,'',false转布尔是false，其余的都是true
+    console.log(Boolean('      ');//true
+    - !val: 其它数据类型转布尔，然后取反   console.log(!0);  //true
+    - !!val:其它数据类型转布尔，然后取反再取反（等价于Boolean（val））；
+  5.null 和 undefined 
+   - 都表示没有
+   - null:一般是指意料之中的（一开始不知道的值，等以后知道了，再重新赋值）
+   - undefined：意料之外的（一般情况下都是浏览器默认的机制）
+   6.普通对象,对象属性名重复的话，上边会把下面的覆盖掉
+   - 在js中任何事物都是对象
+   - 所有对象外层都由大括号包裹，里面是由多组0到多组键值对组成
+   - 每一组之间拿逗号隔开
+   - 每一个键值对都是由属性名和属性值组成（key:value），中间拿冒号分割
+   - 每一个属性名的数据类型是由数字或者字符串类型的，引号可以省略不写，属性值必须是js数据类型中的一种
+            let person = {
+           name: 'wangWei',
+           age:18,
+           sex:true,
+           height:'180cm',
+           6:13
+          }
+ 7.对象的增删改查
+              et monkey={
+                  name:'sunK',
+                  age:null,
+                  sex:'man',
+                  6:9,
+              };
+  - 1.对象的查询：寻找对象的属性名所对应的属性值     
+     对象名.属性值   ：如果属性名是数字，则不能用这种方法获取
+      console.log(monkey.name);
+      console.log(monkey.8);  //报错
+      对象名['属性值']：如果属性名是数字，可以不写引号
+      console.log(monkey['name']);
+      如果查找对象里的某一个属性名所对应的属性值查找不到就是undefined
+    - 2.对象的修改和新增
+     如果操作的属性名存在，那就是修改，如果没有就是新增
+      monkey.name='222';   //修改   monkey['name']=222;
+      monkey.sss='7';  //新增
+    -3.对象的删除
+      假删除：它的属性名还是存在的
+      monkey.name=null;
+      真删除：把属性名也删除掉    delete monkey.name;
+   8.数组：特殊的对象
+     let ary=[1,2,3,4];
+     所有的数组外层由中括号包裹，里边的每一项都是属性值，逗号分割
+     数组的属性名是浏览器自动生成的，从0开始，依次递增，它还可以代表属性值所在的位置，也被称为索引
+     索引（属性名）：从0开始，依次递增，可以代表属性值的位置
+     数组天生自带一个length属性，其属性值就是数组的长度
+    给数组末尾新增一项
+     ary[arr.length]='xxx';
+     删除数组最后一项,改变数组的长度
+     ary.length=ary.length-1;
+     清空数组 ary.length=0;
+      
+      
+        /* let a = 12,
+            b = 13,
+            c = 14;
+            等价
+        let a = 12;
+        let b  =13;
+        let c = 14; */
+
+       /* let a = b = c = 12;
+        等价
+        let a = 12;
+        b = 12;
+        c = 12; */
+  9.堆栈内存
+  当你打开一个页面的时候，浏览器会从运行机制中分配出一块内存来为代码执行提供环境，还会分配出一个线程来执行代码
+  只要出现新的引用数据类型，就开辟新的堆内存
+   - 栈内存
+   基本数据类型操作的是值
+   引用数据类型操作的是空间地址
+   
+   
+  day3
+  1.数据类型比较
+  - =：赋值
+     ==：比较，返回值是一个布尔类型的值
+     !=:  不等，也会进行数据类型的转换
+     ===：绝对比较，不会进行数据类型的转换
+     ！==：绝对不等，不会进行数据类型的转换
+     
+     不同数据类型之间的比较：会进行隐式数据类型的转换
+     数字==字符串：他会把左右两边转数字，在进行比较
+     数字==布尔：他会把左右两边转数字，在进行比较
+     布尔==字符串：他会把左右两边转数字，在进行比较
+     对象==对象：比较的是空间地址
+     对象==数字：他会把左右两边转数字，在进行比较
+     对象==字符串：他会把左右两边转字符串，在进行比较
+     对象==布尔：他会把左右两边转数字，在进行比较
+     
+     null==null;  //true
+     undefined == undefined //true
+     null==undefined  //true
+      除此之外null和undefined和谁都不相等
+        NaN和谁都不相等
+      字符串比较的是ascii码
+      console.log('11'>'7');  //false
+   2. js中的逻辑判断
+   -    && 逻辑与   ：val && val 如果前面取布尔是true，就取后面的值，否则就取后面的值
+   -    ||逻辑或  ：val || val ：如果前面布尔是true，就取前面，反之取后面
+   -    %: 模，取余数
+   -  +=/-=：累加累减
+   -  i++/i--：先取值后运算
+   -  --i/++i:先运算后取值
+              let m = 5;
+              let num = (m++) + (--m);
+              console.log(num);
+              console.log(m)；
+ 3. js中的判断语句：条件成立干啥事，不成立干啥事
+  - if/else  /else if/else
+   if(判断的条件){
+            条件成立你要做的事
+        }
+        
+        //    if(true){
+        //     // 他会把小括号里的值转布尔，如果转布尔是true，那条件就成立，大括号里的代码就执行,反之就不会执行
+        //     // / /小括号里的值是多样性的，
+        //     console.log(111)
+        //    } else {
+        //     //    如果上边的条件不成立，就走这里
+        //     console.log(222)
+        //    }
+
+        let num = 0;
+        if (num) {
+            console.log(1);
+            // 只要条件成立，不管下边是否成立都不会在继续执行
+        } else if (num === 12) {
+            console.log(2)
+        } else {
+            // 如果上边的条件都不成立，就走这里的代码
+            console.log(3)
+        }
+   4.三元运算符：处理简单的if/else的逻辑
+    条件？条件成立做的事：条件不成立做的事     
+    如果条件不成立，你没有想做的事，但是位置不能空着，要用null占位
+    如果想在条件成立时做多件事，就拿括号包起来，中间那逗号隔开
+    支持嵌套
+    1？console.log(1):null;
+    1？(console.log(1),console.log(3)):null;
+    a > 0 ? a < 10 ? a++ : a-- : a < -10 ? a += 2 : null;
+   5. switch case
+   // 这里边做的是绝对比较 ===，不会进行数据类型的转换
+   // 如果不写break，那条件一旦成立，下面的条件不管是否成立，都会执行，直到遇到break为止
+        switch(1){
+            case 1:
+                console.log(111);
+                // break; // 他是阻断代码向下运行的
+            case 10:
+                console.log(222);
+                break;
+            default:   //相当于else
+                console.log(333)
+        }
+6. 三个循环
+- js中的循环：不断地重复去做某件事
+  for 循环
+  for in 循环
+  while 循环
+ -   for循环(如果for循环执行不完，那他下面的代码不会执行，他又阻塞线程的作用)
+      创造循环的初始值，
+      创建，判断循环的条件是否成立
+      条件成立，执行循环体的代码
+      进行步长累计
+      continue:结束当前轮的循环（continue下面的代码不再执行），进行下一轮循环
+      break：结束所有的循环
+ -  while循环:一般用于不知道要循环多少次的循环
+             let a=10;
+             while(a>0){
+              console.log(1);  //阻塞线程
+             }   //循环停不下来
+ -  for in循环： 遍历对象
+        let obj = {
+            age:18
+        }
+        // let a = 'age';
+        // console.log(obj.age);
+        // console.log(obj['age']);
+        // // 如果想利用变量去获取对象里的属性名所对应的属性值，必须要用对象名[]的这种形式
+         // console.log(obj.a);  //undefined 
+        // console.log(obj[a]);  //18
+        
+     for(var key in obj){
+     //对象有多少键值对,就会循环(遍历)多少次
+     //key就是每一个键值对的属性名
+     //console.log(key);
+     console.log(obj[key]);  //输出每一个键值对的属性值
+     }
+     
+ 7.<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 200px;
+            height: 200px;
+            background: red;
+            margin: 20px auto;
+        }
+
+        .ss {
+            /* background: black; */
+            color: aquamarine;
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box" class="boxss" style="color: yellow;">1111</div>
+    <script>
+        /* 
+        元素也是对象；
+        get:获取
+        element：元素
+        by：通过
+        */
+        let box = document.getElementById('box');
+        //    console.dir(box) // 在控制台详细输出一个对象
+        //    console.log(box.className)
+
+        // box.className = 'ss'; //js动态增加calss名
+        //    console.log(box.style) 
+        //    box.style.backgroundColor = 'orange' // 动态增加style样式
+
+
+        // console.log(box.innerHTML) // 获取元素的内容
+        // console.log(box.innerText) // 获取元素的内容
+        // box.innerHTML = '12345678';// 设置元素的内容
+        // box.innerText = 'sssss'// 设置元素的内容
+        box.innerHTML = '<span class="w" style="color:green">哈哈</span>'
+        // box.innerText = '<span class="w" style="color:red">哈哈</span>'
+        /* 
+        className：元素写的class名
+        style :元素的行内样式
+        innerHTML: 获取元素的内容(可以识别标签)
+        innerText: 获取元素的内容(不可以识别标签)
+        */
+    </script>
+</body>
+
+</html>
+
+day4
+1.js中数据类型的检测
+- typeof:这是检测数据类型的属性
+- instanceof:当前实例是否属于某个类
+-  constructor：基于构造函数检测数据类型
+- Object.prototype.toString.call():检测数据类型最好的方式
+  typeof val:返回值是一个字符串,字符串里边的内容就是当前值的数据类型
+  typeof的局限性:不能区分null,普通对象,数组的数据类型,他们的返回值都是"object"
+        console.log(typeof 1) // 'number'
+        console.log(typeof '1') // 'string'
+        console.log(typeof undefined) // 'undefined'
+        console.log(typeof true) // 'boolean'
+        console.log(typeof null) // 'object'
+        console.log(typeof ({})) // 'object'
+        console.log(typeof []) // 'object'
+ 只要typeof出现两次及以上,那它的返回值肯定是"string"
+2.函数的定义:函数即方法,把实现某个功能的代码封装到一起,以后你想使用这个功能,就执行这个方法就好了,减少代码的冗余,提高代码的复用率(低耦合,高内聚)
+ 
+        创建一个函数，把实现某个功能的代码封装到函数里，函数也有一个入口(函数的形参入口)，函数也有一个出口，就做返回值
+        函数执行，把实参放进去 函数名()
+    
+        // 需求：那两个数进行求和，然后除以2
+        // let sum = 10 + 12;
+        // sum = sum / 2;
+        // console.log(sum);
+        // let sum1 = 20+30;
+        // sum1 = sum1/2;
+        // console.log(sum1);
+        // 创建函数
+        function sum(m,n){
+        //函数执行的第一步就是给形参变量进行赋值
+            // 函数定义的时候，小括号里放的就是函数的形参变量
+            let total = m+n;
+            total = total/2;
+            console.log(total);
+        }
+        // 执行函数  函数名(), 函数执行时，小括号里存放的是函数的实参
+        sum(10, 12);
+        sum(20,30);
+        // 函数可以无限制的执行，而且每一次执行都是相互独立的
+        // 函数每执行一次，函数里的代码就会重新执行一遍
+-  函数的实参和形参
+           函数的形参和实参
+              */
+             function sum(n,m){ // 函数创建时，小括号里的变量叫做形参变量
+                  // 形参和实参是一一对应的
+                 // 函数执行时，实参不给形参赋值，那形参的结果就是undefined
+                 console.log(n,m)// 10, undefined
+
+                  // let total = n+m;
+                  // total = total/2;
+                  // console.log(total)
+             }
+
+             // 函数名加(),叫做函数执行，函数执行时，传的参数是函数的实参
+          //    sum(10, 12);
+          //    sum(10, 11, 12)
+          //    sum()
+          sum(10)
+3. 函数的返回值
+   函数里面的东西,在函数外面是拿不到的
+   return:就是函数的返回值return出去(return下面代码不再执行)
+   阻断代码向下运行
+     */
+        function fn(n, m) {
+            let total = n + m;
+            total = total / 2;
+            // console.log(total);
+            // 函数的返回值：谁执行的函数，当前返回值就给谁
+            // return的一定是一个值
+          //  如果函数没有返回值,那函数执行的结果就是undefined
+          //如果只写return,后面不跟东西,那函数的执行结构还是undefined
+            return total;
+        }
+       console.log(fn(10,12)) 
+        // 函数里边的东西，在函数外边是拿不到的
+        // console.log(total)
+       
+   出现undefined的情况：
+        1、对象里获取属性名所对应的属性值获取不到，那就是unedfined
+        2、函数执行时，实参不给形参赋值，那结果就是undefined
+        3、函数没有return(返回值)，那函数执行结果就是undefined
+        4、创建一个变量，不给他赋值，那他的值就是undefined
+        */
+
+        /* 
+        出现null的情况：
+        1、给变量手动赋值为null
+        2、通过id获取元素，获取不到，那结果也是null
+  4. 函数的arguments函数的实参集合,是一个类数组
+      arguments里的callee指的是函数本身,在严格模式下禁止使用callee
+  5. 任意数求和
+        */
+       function sum(){
+           let total = null;
+            for (var i = 0; i < arguments.length; i++) {
+                var cur = Number(arguments[i]) // 把数组的每一项转数字
+                if(!isNaN(cur)){
+                    // 判断当前的cur是不是一个有效数字，如果是有效数字，当前条件就成立
+                    total+=cur;
+                }
+            }
+            return total
+       }
+6. 匿名函数
+  - 自执行函数:
+     (function(形参){        (function(num)){
+                                         console.log(num)
+     })(实参)                       }(10);
+     +function(){}();
+     -function(){}();
+     ~function(){}();
+     !function(){}();
+  - 函数表达式
+    let fn=function(){}
+    function fn(){}    //一样的
+   nth-child,odd.even
+   
+   
+   day5
+   1. console.log/dir/table:
+    - log:在控制台打印js的值(调试)
+    - dir:查看对象的详细信息
+    -table: 把多维对象打印成表格输出
+    
+    他们的返回值是undefined
+   2. alert:浏览器的弹窗
+   - 在浏览器弹出输入的内容
+   - 默认把输入的内容转字符串
+   - 阻止代码向下运行,当点击确定的时候,代码才会继续向下走
+   - 返回值是undefined
+   3. confirm:浏览器的弹窗,在alret上增加了一个取消按钮
+   - 在浏览器弹出输入的内容
+   - 默认把输入的内容转字符串
+   - 阻止代码向下运行,当点击确定/取消的时候,代码才会继续向下走
+   - 如果点击确定,返回值true,点击取消,返回值false
+   4. prompt:浏览器的弹窗,在aconfirm上增加了一个输入框
+   - 在浏览器弹出输入的内容
+   - 默认把输入的内容转字符串
+   - 阻止代码向下运行,当点击确定/取消的时候,代码才会继续向下走
+   - 如果点击确定,返回值是输入框的内容,点击取消,返回值null
+   5.script的用法
+    - 最长面的位置就是把script放在body的底部,为了能正常获取页面中的元素
+    - <style></style>
+    <script>
+        // 把script放到顶部，有可能获取元素获取不到
+            // let box = document.getElementById('box');
+            // console.log(box);
+            window.onload = function(){
+                // 当页面中的元素和结构全部加载完成之后，这个函数才会被触发
+                 let box = document.getElementById('box');
+                 console.log(box);
+            }
+            console.log(window)
+            alert() // 获取window上的属性可以省略window.
+            // window.alert()
+    </script>
+</head>
+
+<body>
+    <div id="box">let a = 12</div>
+    <!-- <script>
+    /* 
+        script的用法：
+        1、最常见的位置就是把script放到body的底部，为了能够正常获取页面中的元素
+    */
+        let box = document.getElemetById('box');
+        console.log(box);
+    </script> -->
+</body>
+
+</html>-----------------
+- <script src=''>console.log('2222')</script>   //如果script你写了src属性，那当前script标签里的代码就失效了
+6. 函数的执行过程
+ - 函数最主要的特点:封装,把实现某个功能的代码封装到一起,以后想实现这个功能,就直接调用这个函数就好了
+  - arguments:和形参存在一一映射的关系,一个改变,另外一个也改变,在严格模式下,映射关系取消
+ 7.选项卡运行原理
+ 8.  let i = 5; // 6 5
+        i++ > 5 ? i++ : i--;
+        console.log(i); // 5
+9.表单不能使用innerHTML和innerTEXT,去获取和设置内容,要用value
+10. toFixed()  //把数字转换为字符串,而且内部进行四舍五入,toFixed()传的参数就是保留几位小数
+  
+  
+  day6
+ 1.js中数据类型的检测
+- typeof:这是检测数据类型的属性
+- instanceof:当前实例是否属于某个类
+-  constructor：基于构造函数检测数据类型
+- Object.prototype.toString.call():检测数据类型最好的方式
+ 2. 箭头函数：ES6的语法
+  let sum=(n,m)=>{}
+  - 如果函数只有一个形参，可以省略小括号   let sum=n=>{}    let sum=(n)=>{}
+  - 如果函数大括号里只有return一行代码，可以省略大括号和return
+  function fn(n){                     let fn=n=>n;
+  return n;
+  }
+ - 如果函数return的是一个空对象，那简写的时候要给空对象加小括号
+  function fn(){            let fun=()=>({})
+  return {};
+  }
+ - 箭头函数没有arguments
+ - 箭头函数没有this
+ 3.展开收/缩运算符...
+   let fn=(...arg)=>{  //收缩云运算符  [1,2,3,4,5,6]
+     console.log(arg);
+     console.log(...arg)  //展开运算符   1 2 3 4 5 6
+    }
+    fn(1,2,3,4,5,6);
+ 
+   let ary=[1,2,3,4,5];
+   let ary1=[...ary];  //克隆数组clone
+   console.log(...ary1);  //[1,2,3,4,5]   //空间地址
+   console.log(ary==ary1);  //false
+4.给函数的形参符默认值ES6
+  function fn(m=0,n=0){
+  return m+n;
+  }
+   如果函数执行过程的时候不传实参,那形参的值就是你赋的默认值,如果传实参,形参的值就是实参的值
+5. 数组的方法:只有数组可以调用
+- 方法的含义,方法的参数,方法的返回值,原有数组是否发生改变
+- 数组的增删改查
+    #push : 给数组末尾增加内容 
+             + 含义：给数组末尾增加内容
+            + 可以传多个值
+            + 新数组的长度
+            + 原有数组发生改变
+            ary[ary.length]='xxx';
+    #unshift:给数组开头增加内容
+              + 含义：给数组开头增加内容
+            + 参数：可以传多个值
+            + 返回值：数组长度
+            + 原数组是否发生变化：发生改变
+    #pop:  ary.pop();
+            + 含义：删除数组最后一项
+          + 参数：无
+          + 返回值：删除的那一项
+          + 原数组是否发生变化：发生改变
+    #shift:  
+         + 含义：删除数组开头一项
+          + 参数：无
+          + 返回值：删除的那一项
+          + 原数组是否发生变化：发生改变
+   #splice:
+          + 含义：数组的增删改查
+          + 参数：不固定
+          + 返回值：是一个新的数组,数组里的内容就是删除的哪几项
+          + 原数组是否发生变化：发生改变
+      
+                        let ary = [23, 34, 55, 12, 65]; 
+                    // 传递一个参数 n：从索引n开始，删除到数组末尾
+                          // console.log(ary.splice(2)) // [55, 12, 65]
+                          // console.log(ary) // [23, 34]
+                          // console.log(ary.splice()) // 如果方法不传值，那就是一个也不删
+                          // console.log(ary)
+                   // 传递两个参数 n,m：从索引n开始，删除m个
+                          // console.log(ary.splice(2,1)) // [55]
+                          // console.log(ary) // [23, 34, 12, 65]
+
+                          // console.log(ary.splice(0, 1)) // 删除数组开头一项
+                          // console.log(ary.splice(ary.length-1,1)) // 删除数组末尾一项 ary.splice(ary.length-1)
+
+                   // 传递三个参数n,m,x:从索引n开始，删除m个，用x替换
+                          // console.log(ary.splice(2, 2, true, false))
+                          // console.log(ary) // [23, 34, true, false, 65]
+                   // 增加内容：n,0,x:从索引n开始。删除0个，把x放到索引n对应值的的前面
+                      // console.log(ary.splice(2,0, true)) // []
+                      // console.log(ary)// [23, 34, true,55, 12, 65];
+
+                      // console.log(ary.splice(0,0,'erYa')); // 数组开头增加一项
+                      // let ary = [23, 34, 55, 12, 65];
+                      // console.log(ary.splice(ary.length, 0, 'erYa')) // 向数组末尾增加一项
+ - 数组的截取和拼接(原数组不变)
+   # slice:
+        + 含义：数组的截取
+          + 参数：不固定
+          + 返回值：截取后新的数组
+          + 原数组是否发生变化：不发生改变
+      
+                              // 传递一个参数n:从索引n开始，截取到末尾
+                        // console.log(ary.slice(1)) // [34, 55, 12, 65]
+                        // console.log(ary.slice(0)) // 数组的克隆
+                        // console.log(ary.slice()) // 数组的克隆
+                        // console.log(ary) // [23, 34, 55, 12, 65]
+                    // 传递两个参数n,m:从索引n开始，截取到索引m(不包含索引m所对应的值)
+                        // console.log(ary.slice(2,4)) // [55, 12]
+                        // console.log(ary.slice(2,100)) // [55, 12, 65]
+                        // 传递的参数支持负数
+ 
+  #concat
+      + 含义：数组的拼接
+          + 参数：多个值
+          + 返回值：拼接后新的数组
+          + 原数组是否发生变化：不发生改变
+ 
+                     let ary = [23, 34, 55, 12, 65];
+                  // console.log(ary.concat(1))
+                  console.log(ary.concat([1,2,3])) // [23, 34, 55, 12, 65,1,2,3]
+                  console.log(ary.push([1,2,3]))
+                  console.log(ary)
+#数组转字符串
+    + join
+     + 含义：数组以特定的分隔符转字符串
+        + 参数：分隔符
+        + 返回值：转换后的字符
+        + 原数组是否发生变化：不发生改变
+
+        let ary = [23, 34, 55, 12, 65];
+          // console.log(ary.join('$')) // '23$34$55$12$65'
+              // console.log(ary.join('+')) // '23+34+55+12+65'
+              // eval:把字符串转换为js表达式
+              console.log(eval(ary.join('+'))) // 189
+              function fn(){console.log(1)}
+              eval( 'fn()')
+#数组的排序
+        - reverse:
+        + 含义：数组的倒叙
+        + 参数：无
+        + 返回值：排序后的数组
+        + 原数组是否发生变化：发生改变
+      - sort:
+         + 含义：数组的排序
+        + 参数：无或者函数
+        + 返回值：排序后的数组
+        + 原数组是否发生变化：发生改变
+
+       回调函数:在一个函数里面调用另一个函数 
+                   //  let ary = [2,3,6,7,1];
+                      // 1、如果不传参，只能给小于10的数排序，默认是升序
+                      // console.log(ary.sort()) // [1, 2, 3, 6, 7]
+                      // console.log(ary) // [1, 2, 3, 6, 7]
+
+                    /*   let ary = [7, 111, 22, 11,9];
+                      console.log(ary.sort()) // [11, 111, 22, 7, 9]
+                      console.log(ary) // [11, 111, 22, 7, 9] */
+                      // 2、如果传递一个函数，那就可以给多位数排序
+                      let ary = [7, 111, 22, 11,9];
+                      ary.sort(function(a, b){     //回调函数
+                          // return a-b 升序
+                          // return b-a 降序
+                          return b-a
+                      })
+                      console.log(ary);
+ - indexof
+                 + 含义：检测某个值在数组中第一次出现的位置
+                  + 参数：(检测的值,开始检测的位置)
+                  + 返回值：检测的值在数组中第一次出现的位置，如果数组中没有这个值，就返回-1
+                  + 原数组是否发生变化：不发生改变
+
+            let ary = [1,2,3,4,1,2,3,2];
+                // 检测某个值在数组中第一次出现的位置，如果数组中没有这个值，就返回-1
+                // console.log(ary.indexOf(2)) // 1
+                // 如果传递两个参数，那第二个参数就是开始检测的位置
+                console.log(ary.indexOf(2,2)) // 5
+ - lastIndexof
+             + 含义：检测某个值在数组中最后一次出现的位置
+                  + 参数：(检测的值,检测结束的位置)
+                  + 返回值：检测的值在数组中最后一次出现的位置，如果数组中没有这个值，就返回-1
+                  + 原数组是否发生变化：不发生改变
+         let ary = [1,2,3,4,1,2,3,2];
+              // console.log(ary.lastIndexOf(2)) // 7
+              // 如果传递两个参数，那第二个参数就是检测结束的位置
+              console.log(ary.lastIndexOf(2,6)) // 5
+  - incliudes
+        + 含义：检测数组中是否包含某个值
+        + 参数：检测的值
+        + 返回值：是一个布尔值，如果检测的值在数组里有，那句返回true，反之返回false
+        + 原数组是否发生变化：不发生改变
+  - forEach
+        + 含义：循环(遍历)数组
+        + 参数：函数
+        + 返回值：undefined
+        + 原数组是否发生变化：不发生改变
+
+          let ary = [true, false, null, NaN];
+                  ary.forEach((item, index)=>{
+                      // 数组有多少项，就循环多少次
+                      // item就是每一项的值
+                      // index就是每一项的索引
+                      console.log(item, index)
+                  })
+  
+      let ary = [true, false, null, NaN];
+        ary.forEach((item, index) => {
+            // 数组有多少项，就循环多少次
+            // item就是每一项的值
+            // index就是每一项的索引
+            console.log(item, index)
+        })
+
+        function sum(...arg) {
+            let total = null;
+            arg.forEach(item => {
+                item = Number(item);
+                if(!isNaN(item)){
+                    total+=item
+                }
+            })
+            return total
+        }
+        console.log(sum(...ary))
+ - map:
+       + 含义：循环(遍历)数组，也叫数组的映射
+        + 参数：函数
+        + 返回值：映射之后的数组
+        + 原数组是否发生变化：不发生改变
+           // 他可以改变返回数组的值
+                let ary = [1,2,3,4,5];
+                // `` 模板字符串，里边可识别变量 ${}
+               let res =  ary.map((item, index)=>{
+                    return `<p>我是第个${item}美人鱼</p>`
+                })
+                let msg = '全世界最帅的'
+                console.log(res)
+                console.log(`我是${msg}股东`)
+
+   map案例
+                              <!DOCTYPE html>
+                        <html lang="en">
+                        <head>
+                            <meta charset="UTF-8">
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                            <meta http-equiv="X-UA-Compatible" content="ie=edge">
+                            <title>Document</title>
+                            <style>
+                                * {
+                                    padding: 0;
+                                    margin: 0;
+                                }
+                                ul {
+                                    list-style: none;
+                                    width: 500px;
+                                    margin: 20px auto;
+                                    border: 1px solid black;
+                                }
+                                ul li {
+                                    border-botom: 1px solid black;
+                                }
+                                ul li:nth-child(odd) {
+                                    background: red;
+                                }
+                                ul li:nth-child(even) {
+                                    background: green;
+                                }
+
+
+
+                            </style>
+                        </head>
+                        <body>
+                            <ul id="box">
+
+                            </ul>
+                            <script>
+                                let box = document.getElementById('box');
+                                let ary = [1,2,3,4,5];   //模拟后台请求的数据
+                                let res = ary.map((item, index)=>{    //遍历数组的每一项，映射成想要的字符串格式的标签
+                                    return `<li class="flag">我是第${item}个li</li>`
+                                })
+                                
+                                res = res.join('')
+                                console.log(res)
+                                box.innerHTML = res;
+
+                            </script>
+                        </body>
+                        </html>
+   
+ 数组去重
+   一：
+   /* 
+ 数组去重：
+ var ary=[1,2,3,2,3];
+ var ary=[1,2,3]
+   先拿出第一项1
+             ======>2,3,2,3
+   先拿出第二项2
+             ======>3,2,3  删除掉2
+             ======> [1,2,3,3] 现在
+   先拿出第三项3
+             =====>3
+
+ 原理：我依次拿出数组中的每一项，和后面的所有项进行比较，如果相同，我们就把原数组中的此项删除掉
+
+*/
+
+        var ary=[1,2,3,2,3];
+                        function unique(ary){
+                            for(var i=0;i<ary.length-1;i++){
+                                var current=ary[i];
+                                for(var j=i+1;j<ary.length;j++){
+                                   var next=ary[j];
+                                   if(current==next){
+                                        ary.splice(j,1);
+                                        j--;
+                                   }
+                                }
+                            
+                            }
+                            return ary;
+                        }
+
+                        var ary2=[1,2,1,3,3,2,3];
+
+                        var res=unique(ary2)
+   二：      
+            /* 
+                 var ary2=[1,2,1,3,3,2,3];
+
+                 var obj={1:1,2:2,3:3}
+
+                 原理：新建一个空对象，遍历原数组中的每一项，让每一项作为空对象的属性名和属性值，但是在添加的时候，如果这个对象中已经有了这个属性名，那么就删除掉原数组中的这一项
+
+                */
+                var ary2=[1,2,1,3,3,2,3];
+
+                // var obj={1:1,2:2,3:3}
+                function unique(ary){
+                    var obj={};
+                    for(var i=0;i<ary.length;i++){
+                          var item=ary[i];
+                          // 如果这个对象中已经有这个属性了
+                          if(typeof (obj[item])!="undefined"){
+                             ary.splice(i,1);
+                             i--;
+                          }
+                          obj[item]=item;
+                    }
+                    return ary;
+                }
+
+                var res=unique(ary2);
+   三
+                   var ary=[1,2,3,2,3];
+
+              /* 
+               新建一个空数组，遍历原数组中的每一项，如果这个新建的数组中没有，就push就去
+
+              */
+              function unique(ary){
+                 var newAry=[];
+                 for(var i=0;i<ary.length;i++){
+                     var item=ary[i];
+                     if(newAry.indexOf(item)==-1){
+                      newAry.push(item);
+                     }
+                     
+                 }
+                 return newAry;
+              }
+              var res=unique(ary);
+
+   day7
+   三元运算符中不可以使用break和countine                     
+      
+     
+     
+  
+  
+  
+  
+  
+  
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

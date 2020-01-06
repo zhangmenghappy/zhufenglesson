@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let arr=[];
+    function code(obj){
+        for(var key in obj){
+            let aa=obj[key] instanceof Array;
+            let bb=typeof obj[key];
+            arr.push(key);  
+            if(typeof obj[key] == 'object' && aa==false && bb!='number'){    
+               // arr.push(key);  
+                code(obj[key]);                   
+            }else if(typeof obj[key] == 'object' &&  aa==true && bb!='number'){
+               for(var i=0;i<obj[key].length;i++){
+               // arr.push(obj[key][i]);
+                code(obj[key][i]);    
+               }
+            }else{
+                continue;
+            }
+        }
+        return arr;
+    }
+    var obj = {
+        n: {
+            x:1,
+            a: [
+                { b: 1, c: [{ d: 1 }, { e: 1 }] },
+                { f: 1 },3
+            ]
+        },
+        m:0
+    };
+   let b= code(obj);
+   console.log(b);
+    </script>
+</body>
+</html>

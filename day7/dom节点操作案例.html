@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{
+        margin:0;
+        padding:0;
+    }
+  #a{
+      width:500px;
+      margin:0 auto;
+      margin-top:50px;
+      background:darkturquoise;
+      height:500px;
+  }
+  #box{
+      list-style:none;
+  }
+  #box li{
+      height:3opx;
+      margin:5px 5px;
+      float:left;
+      width:400px;
+  }
+  button{
+      float:right;
+  }
+  #input{
+      margin-left:150px;
+  }
+    </style>
+</head>
+<body>
+    <div id="a">
+  <input type="text"  id="input">
+  <ul id="box"> </ul>
+</div>
+  <script>
+  let input=document.getElementById("input");
+  let box=document.getElementById("box");
+  input.onblur=function(){
+      let value=input.value;
+     let ali=document.createElement("li");
+     let aNote=document.createTextNode(value);
+     let btn=document.createElement("button");
+     btn.innerHTML="删除";
+     ali.innerHTML=value;
+     input.value="";
+     box.appendChild(ali);
+     ali.appendChild(btn);
+     let aList=box.getElementsByTagName("li");
+     //let oBtn=box.getElementsByTagName("button");
+    for(let i=0;i<aList.length;i++){
+        aList[i].myStyle=i;
+        if(i%2==0){
+          aList[i].style.background='pink';
+        }else{
+            aList[i].style.background='blue';
+        }
+        console.log(aList[i].myStyle);
+    }
+
+    btn.onclick=function(){
+     this.parentNode;
+     console.log(this.parentNode.parentNode.removeChild(this.parentNode));
+
+    for(let j=0;j<aList.length;j++){
+        aList[j].myStyle=j;
+        if(j%2==0){
+          aList[j].style.background='pink';
+        }else{
+            aList[j].style.background='blue';
+        }
+   }
+    }
+  }
+  </script>
+
+</body>
+</html>

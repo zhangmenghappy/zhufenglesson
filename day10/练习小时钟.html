@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+   
+     <style>
+     #box{
+         width:100%;
+         height:50px;
+         background: pink;
+         font-size:30px;
+         line-height:50px;
+         text-align:center;
+     }
+      </style>
+</head>
+<body>
+    <div id="box">1111</div>
+<script>
+    let box=document.getElementById("box");
+   
+       function code(k){
+         if(k<10){
+           return  k="0"+k;
+         }else{
+             return k;
+         }
+       }
+     function sun(a){
+         let obj={
+            0:"星期日",
+            1:"星期一",
+            2:"星期二",
+            3:"星期三",
+            4:"星期四",
+            5:"星期五",
+            6:"星期六",
+         };
+       return obj[a];
+     }
+     function getTime(){
+        let time=new Date();
+   let year=time.getFullYear();
+       month=time.getMonth()+1;
+       day=time.getDate();
+       week=time.getDay();
+       hour=time.getHours();
+       sec=time.getSeconds();
+       min=time.getMinutes();
+        let b=code(year)+"年"+code(month)+"月"+code(day)+"日"+code(hour)+"时"+code(min)+"分"+code(sec)+"秒"+sun(week);
+     box.innerHTML=b;
+     }
+    getTime();
+     setInterval(getTime,1000);
+</script>
+</body>
+</html>
