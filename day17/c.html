@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //原型链继承,公有私有属性均可继承
+    // function A(){
+    //     this.a=111;
+    // }
+    // function B(){
+
+    // }
+    // B.prototype=new A;
+    // let f1=new B;
+    // console.log(f1.a);
+    //中间类继承:继承公有属性,不可继承私有属性,可以手动把实例的__proto__
+      //指向Array的prototype
+
+    //   function fn(){
+    //       arguments.__proto__=Array.prototype;
+    //       arguments.push(66);
+    //       console.log(arguments);
+    //   }
+    //   fn(1,2,3);
+
+    //call:继承私有属性
+
+    // function A(){
+    //     this.a=1;
+    // }
+    // function B(){
+    //     this.b=2;
+    //     A.call(this);
+    // }
+    // let f1=new B;
+    // console.log(f1);
+
+
+    //寄生混合继承:既能继承私有属性,也能继承公有属性,在call继承的基础上执行
+    //Object.create(obj);创造了一个空对象,并把空对象的__prototype__
+    //指向当前参数
+    function A(){
+        this.aaa=111;
+    }
+    A.prototype.say=function(){
+        return 'hhh';
+    }
+    function B(){
+        this.bb=222;
+        A.call(this);
+    }
+   
+    B.prototype=Object.create(A.prototype);
+    B.prototype.ccc=333;
+    console.log(B.prototype);
+    let f1=new B();
+    console.log(f1.say());
+
+    </script>
+</body>
+</html>

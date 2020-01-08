@@ -8,10 +8,24 @@
 </head>
 <body>
     <script>
-    function Fn(){}
-  let f1 =new Fn();
-   console.log(Object.prototype.toString.call(f1));//
-   console.log(({}).toString.call(1)) // Number
+     function myCall(value,...arg){
+         value=value||window;
+         value.Fn=this;
+         let k=null
+        k=value.Fn();
+        delete value.Fn;
+        return k;
+     }
+     function Fn(n,k,f){
+         this.a=1111;
+         return 333;
+     }
+     let obj={
+         b:2222,
+     }
+     Function.prototype.myCall=myCall;
+     Fn.myCall(obj);
+     console.log(Fn.myCall(obj));
     </script>
 </body>
 </html>

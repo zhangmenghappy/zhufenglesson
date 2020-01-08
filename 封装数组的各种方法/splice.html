@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function mySplice(...arg){
+            if(arg == ''){
+                return this;
+            }
+        if(arg.length==1){
+            if(arg>this.length || arg<0 ){
+                return false;
+            }else{
+                  let aa=[];
+          for(let i=this.length-1;i>=arg;i--){
+              aa[aa.length]=this[this.length-1];
+              this.length--;
+          }
+          return  aa;
+        }
+            }
+          
+        if(arg.length==2){
+            let bb=[];
+         for(let i=0;i<arg[1];i++){
+             for(let j=arg[0];j<this.length;j++){
+                 bb[bb.length]=this[j];
+                  this[j]=this[j+1];
+             }
+            this.length--;
+         }
+         return bb;
+        }
+        }
+    Array.prototype.mySplice=mySplice;
+    let arr=[4,2,5];
+     let kk=arr.mySplice(1,2);
+     console.log(kk);
+     console.log(arr);
+    </script>
+</body>
+</html>

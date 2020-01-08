@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    function myK(...arg){
+      for(var i=0;i<arg.length;i++){
+          this[this.length]=this[0];
+          this[0]=arg[i];
+      }
+      return this.length;
+    }
+   Array.prototype.myK=myK;
+    let arr=[4,2,5];
+     let kk=arr.myK(44,55,66);
+     console.log(kk);
+     console.log(arr);
+     </script>
+</body>
+</html>

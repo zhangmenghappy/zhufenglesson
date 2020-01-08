@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function plus(a){
+            return this+a;
+        }
+        function minus(b){
+            return this-b;
+        }
+        Object.prototype.plus=plus;
+        Object.prototype.minus=minus;
+        let n=10;
+        let m=n.plus(15).minus(5);
+        console.log(m);
+        </script>
+</body>
+</html>
