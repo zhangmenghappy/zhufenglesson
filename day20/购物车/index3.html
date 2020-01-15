@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+    <style>
+        body,
+        ul,
+        li {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="price.css" />
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="box">
+            <ul class="list">
+                <li>
+                    <i></i>
+                    <em>0</em>
+                    <i></i>
+                    <span>
+                        单价：<strong>12.5元 </strong> 小计：<strong>0元</strong>
+                    </span>
+                </li>
+                <li>
+                    <i></i>
+                    <em>0</em>
+                    <i></i>
+                    <span>
+                        单价：<strong>10.5元 </strong> 小计：<strong>0元</strong>
+                    </span>
+                </li>
+                <li>
+                    <i></i>
+                    <em>0</em>
+                    <i></i>
+                    <span>
+                        单价：<strong>8.5元 </strong> 小计：<strong>0元</strong>
+                    </span>
+                </li>
+                <li>
+                    <i></i>
+                    <em>0</em>
+                    <i></i>
+                    <span>
+                        单价：<strong>8元 </strong> 小计：<strong>0元</strong>
+                    </span>
+                </li>
+                <li>
+                    <i></i>
+                    <em>0</em>
+                    <i></i>
+                    <span>
+                        单价：<strong>14.5元 </strong> 小计：<strong>0元</strong>
+                    </span>
+                </li>
+            </ul>
+            <div class="info">
+                <span>商品公合计：<em>0</em>件</span>
+                <span>共花费了：<em>0</em>元</span>
+                <br />
+                <br />
+                <span>其中最贵的商品单价是：<em>0</em>元</span>
+            </div>
+        </div>
+    </div>
+   
+    <script>
+       let box=document.getElementsByClassName("box")[0];
+       let list=document.getElementsByClassName("list")[0];
+       let lis=document.getElementsByTagName("li");
+       let em1 = document.querySelectorAll('.info em');
+       let ems=list.getElementsByTagName("em");
+       for(var i=0;i<lis.length;i++){
+           addClick(lis[i]);
+       }
+       function addClick(kk){
+           let aI=kk.getElementsByTagName("i");
+           let em=kk.getElementsByTagName("em")[0];
+           let strong=kk.getElementsByTagName("strong");
+           aI[0].onclick=function(){
+               if(em.innerHTML<=0){
+                   em.innerHTML=0;
+               }else{
+                   em.innerHTML=Number(em.innerHTML)-1;
+               }
+               let a=parseFloat(strong[0].innerHTML);
+               strong[1].innerHTML=a*Number(em.innerHTML)+'元';
+              sum();
+            }
+           aI[1].onclick=function(){
+               em.innerHTML=Number(em.innerHTML)+1;
+               let b=parseFloat(strong[0].innerHTML);
+               strong[1].innerHTML=b*Number(em.innerHTML)+'元';
+              sum();
+            }          
+       }
+
+       function sum(){
+           let total=0;
+           let allPrice=0;
+           let ary=[];
+           for(var i=0;i<ems.length;i++){
+             total+=Number(ems[i].innerHTML);
+             var strong=lis[i].getElementsByTagName("strong");
+             allPrice+=parseFloat(strong[1].innerHTML);
+             if(Number(ems[i].innerHTML)>0){
+                ary.push(parseFloat(strong[0].innerHTML));
+             }
+           }
+           ary.sort((a,b)=>a-b);
+         em1[0].innerHTML=total;
+         em1[1].innerHTML=allPrice;
+         em1[2].innerHTML=ary[ary.length-1];
+       }
+    </script>
+</body>
+
+</html>

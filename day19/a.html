@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="box"></ul>
+    <script>
+        let ary = [{ttile:1},{ttile:2},{ttile:3},{ttile:4}];
+         let htmlStr = '';
+            for (var i = 0; i < ary.length; i++) {
+               htmlStr+='<li class="a">'+ ary[i].ttile+
+                "<button>"+ary[i].ttile+"</button>"+'</li>'
+            }
+            box.innerHTML = htmlStr;
+    </script>
+</body>
+</html>

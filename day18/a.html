@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    function arrP(){
+        let arr=Array.prototype.slice.call(arguments);
+        arr.sort(function(a,b){
+            return b-a;
+        })
+        arr.shift();
+        arr.pop();
+        console.log(arr.length);
+        let sum=null;
+        // for(var i=0;i<arr.length;i++){
+        //   sum+=arr[i];
+        // }
+        sum=eval(arr.join('+'));
+       // console.log(sum);
+        let kk=sum/arr.length;
+        kk=kk.toFixed(2);
+        return kk;
+    } 
+   // let arr=[1,2,3,4,5];
+    let a=arrP(1,2,3,3,4);
+    console.log(a);
+    </script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+//      let str = 'ww33ww44ww55ww66ww77';
+//      let reg = /\d{2}/g;
+//      RegExp.prototype.kk=kk;
+//      function kk(str){
+//          if(!this.global){
+//              return this.exec(str);
+//          }
+//          let ary=[];
+//          let res=this.exec(str);
+//          while(res){
+//              ary.push(res);
+//              res=this.exec(str);
+//          }
+//          if(ary.length==0){
+//              return null;
+//          }else{
+//               return ary
+//          }
+        
+//      }
+//      console.log(str.match(reg));
+    //    let str = 'zhufeng33zhufeng33';
+    //    str=str.replace(/zhufeng/g,function(item){
+    //        return 'kk';
+    //    })
+
+    // let str = 'good good study day day up';
+    // reg=/([a-z])[a-z]*/g;
+    // str=str.replace(reg,function(word,first){
+    //     first=first.toUpperCase();
+    //     word=first+word.slice(1);
+    //     return word;
+
+    // })
+
+//     let url = 'http://www.baidu.com?name=erYa&age=18#index';
+//     String.prototype.kk=kk;
+//     function kk(){
+//          let reg=/([^?=#&]+)=([^?=#&]+)/g;
+//     let obj={};
+//     this.replace(reg,function(){
+//         let [,key,value]=arguments;
+//         obj[key]=value;
+//     })
+//    this.replace(/#([^?#&=]+)/,function(a,item){
+//        obj['haha']=item;
+//    })
+//    return obj;
+//     }
+//     console.log(url.kk());
+   
+let time = '2020-1-14 16:55:8';
+String.prototype.kk=kk;
+function kk(aa='{0}年{1}月{2}日 {3}时{4}分{5}秒'){
+    let reg1=/\d+/g;
+    let ary=[];
+    ary=this.match(reg1);
+    //console.log(ary);
+    //let aa='{0}年{1}月{2}日 {3}时{4}分{5}秒';
+    aa.replace(/\{(\d)\}/g,function(){
+        let [,item]=arguments;
+        item=item||00;
+        if(item.length<2){
+            item='0'+item;
+        }
+        return item;
+    })
+    return aa;
+}
+console.log(time.kk());
+    </script>
+</body>
+</html>

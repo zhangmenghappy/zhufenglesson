@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //JSON是一种数据格式,不是数据类型
+    //前端要给后台发送数据请求,后台返回给前端数据,返回的格式一般情况下就是JSON数据格式的
+    //后端数据的增删改查
+    let obj={'name':'11'};//json格式的数据对象
+    let obj="{'name':'11'}";//json格式的数据对象
+    JSON.parse();//字符串转数组
+    JSON.stringify();//数组转字符串
+    //浅克隆:克隆的是空间地址,改变值会相互影响
+
+    //深克隆
+    let ary1=JSON.parse(JSON.stringify(ary));
+    </script>
+</body>
+</html>

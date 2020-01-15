@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    RegExp.prototype.getExec = function (str) {
+     if (!this.global) {  
+       return this.exec(str)
+     }
+ let obj = {}; 
+    obj.bigAry=[];
+    obj.smallAry=[];
+ let res = this.exec(str); 
+        while (res) {
+         obj.bigAry.push(res[0]); 
+         obj.smallAry.push(res[1]); 
+          res = this.exec(str); 
+            } 
+    if(obj.bigAry.length==0){
+        obj.bigAry=null;
+    }  
+    if(obj.smallAry.length==0){
+        obj.smallAry=null;
+    }       
+     return obj;
+        }
+   
+   let str = 'ww{3}ww{34}';
+    let reg = /\{(\d+)\}/g;
+    console.log(reg.getExec(str))
+    </script>
+</body>
+</html>

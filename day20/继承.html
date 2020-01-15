@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    // //原型继承:私有属性公有属性
+    // function A(){
+    //     this.a=2;
+    // }
+    // A.prototype.say=function(){
+    //     console.log('kk');
+    // }
+    // function B(){
+
+    // }
+    // B.prototype=new A();
+    // let f1=new B;
+    // console.log(f1.a);
+    // console.log(f1.say());
+
+    //中间类继承:继承公有属性
+
+    // function arr(){
+    //     arguments.__proto__=Array.prototype;
+    //     arguments.sort((a,b)=>a-b);
+    //     arguments.push(666);
+    //     return arguments;
+    // }
+    // let a=arr(1,2,3);
+    // console.log(a);
+
+
+    //call继承：继承私有属性
+    // function A(){
+    //     this.a=1;
+    // }
+    // A.prototype.say=function(){
+    //     return 555;
+    // }
+    // function B(){
+    //     this.b=2;
+    //     A.call(this);
+    // }
+    // let f1=new B;
+    // console.log(f1.b);
+
+    //寄生混合继承：继承私有和共有属性
+    // function A(){
+    //     this.a=1;
+    // }
+    // A.prototype.say=function(){
+    //     console.log("555");
+    // }
+    // function B(){
+    //     this.b=2;
+    //     A.call(this);
+    // }
+    // B.prototype=Object.create(A.prototype);
+    // let f1=new B;
+    // console.log(f1.a,f1.b,f1.say());
+    //class继承
+    //  class A{
+    //      constructor(n,m){
+    //          this.s=n+m;
+    //      }
+    //      say(){
+    //          console.log('333');
+    //      }
+    //  }
+    //  class B extends A{
+    //      constructor(a,b){
+    //        super(1,1)
+    //        this.k=a+b;
+    //      }
+    //  }
+    //  let f1=new B(2,2);
+    //  console.log(f1.s,f1.k,f1.say());
+
+    class A{
+         constructor(n,m){
+             this.s=n+m;
+         }
+         say(){
+             console.log('333');  //增加公有属性
+         }
+         k=111;   //增加私有属性
+         static y=function(){   //增加键值对
+             return 'kk';
+         }
+     }
+    </script>
+</body>
+</html>
